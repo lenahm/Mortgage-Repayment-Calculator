@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 import { HeaderComponent } from './header/header.component';
 import { UserInputComponent } from './user-input/user-input.component';
@@ -12,32 +12,33 @@ import { ResultsComponent } from './results/results.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  calculationResults?: {monthlyRate: string, totalPayment: string }; 
+
   onCalculateResults(data: { mortgageAmount: number, mortgageTerm: number, interestRate: number, mortgageType: string }) {
     const mortgageDurationInMonths = data.mortgageTerm * 12; 
+    let monthlyRate: number; 
+    let totalPayment: number; 
 
     // calculate the monthly interest
     const monthlyInterest = (data.interestRate / 100) / 12; 
 
     if (data.mortgageType == 'repayment') {
       // calculate the monthly rate (annuity formula)
-      const monthlyRate = data.mortgageAmount * (((monthlyInterest * ((1 + monthlyInterest) ** mortgageDurationInMonths))) / (((1 + monthlyInterest) ** mortgageDurationInMonths ) - 1));
-      
+      monthlyRate = data.mortgageAmount * (((monthlyInterest * ((1 + monthlyInterest) ** mortgageDurationInMonths))) / (((1 + monthlyInterest) ** mortgageDurationInMonths ) - 1));
+
       // calculate the total payment over the mortgage term
-      const totalPayment = this.calculateTotalPayment(mortgageDurationInMonths, monthlyRate); 
-      
-      // format the monthly rate and the total payment to two decimal places
-      const formattedMonthlyRate = this.formatMoney(monthlyRate); 
-      const formattedTotalPayment = this.formatMoney(totalPayment); 
+      totalPayment = this.calculateTotalPayment(mortgageDurationInMonths, monthlyRate); 
     } else {
       // calculate the montly rate (interest only)
-      const monthlyRate = data.mortgageAmount * monthlyInterest; 
-      
+      monthlyRate = data.mortgageAmount * monthlyInterest; 
+
       // calculate the total payment over the mortgage term
-      const totalPayment = this.calculateTotalPayment(mortgageDurationInMonths, monthlyRate); 
-      
-      // format the monthly rate and the total payment and round it to two decimal places
-      const formattedMonthlyRate = this.formatMoney(monthlyRate); 
-      const formattedTotalPayment = this.formatMoney(totalPayment); 
+      totalPayment = this.calculateTotalPayment(mortgageDurationInMonths, monthlyRate); 
+    }
+    // format the monthly rate and the total payment and round it to two decimal places
+    this.calculationResults = { 
+      monthlyRate: this.formatMoney(monthlyRate), 
+      totalPayment: this.formatMoney(totalPayment)
     }
   }
 

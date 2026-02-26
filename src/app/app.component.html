@@ -5,7 +5,7 @@
             <app-user-input (calculate)="onCalculateResults($event)" />
         </section>
         <section class="right">
-            <app-results />
+            <app-results [results]="calculationResults" />
         </section>
     </main>
 </div>
