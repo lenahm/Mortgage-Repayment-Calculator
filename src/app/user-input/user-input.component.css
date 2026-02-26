@@ -150,7 +150,8 @@ button:hover {
   border-color: red;
 }
 
-.prefix.invalid {
+.prefix.invalid,
+.suffix.invalid {
   background: var(--red);
   color: var(--white);
 }
