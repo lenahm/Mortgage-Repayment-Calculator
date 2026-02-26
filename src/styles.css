@@ -22,4 +22,5 @@ body {
   background: var(--slate-100);
   font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 16px;
+  overflow-x: hidden;
 }
