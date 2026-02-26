@@ -1,39 +1,51 @@
-<form (ngSubmit)="onSubmit()">
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
     <div class="input-group">
         <label for="mortgage-amount">Mortgage Amount</label>
-        <div class="input-wrapper">
-            <span class="prefix">€</span>
-            <input id="mortgage-amount" name="mortgage-amount" type="number" [(ngModel)]="enteredMortgageAmount">
+        <div class="input-wrapper" [class.invalid]="mortgageAmount.invalid && mortgageAmount.touched">
+            <span class="prefix" [class.invalid]="mortgageAmount.invalid && mortgageAmount.touched">€</span>
+            <input id="mortgage-amount" name="mortgage-amount" type="number" required min="1" [(ngModel)]="enteredMortgageAmount" #mortgageAmount="ngModel">
         </div>
+        @if (mortgageAmount.invalid && (mortgageAmount.touched || form.submitted)) {
+            <p class="error-message">This field is required</p>
+        }
     </div>
     <div class="input-two-columns">
         <div class="input-group">
             <label for="mortgage-term">Mortgage Term</label>
-            <div class="input-wrapper">
-                <input id="mortgage-term" name="mortgage-term" type="number" [(ngModel)]="enteredMortgageTerm">
-                <span class="suffix">years</span>
+            <div class="input-wrapper" [class.invalid]="mortgageTerm.invalid && mortgageTerm.touched">
+                <input id="mortgage-term" name="mortgage-term" type="number" required min="1" [(ngModel)]="enteredMortgageTerm" #mortgageTerm="ngModel">
+                <span class="suffix" [class.invalid]="mortgageTerm.invalid && mortgageTerm.touched">years</span>
             </div>
+            @if (mortgageTerm.invalid && (mortgageTerm.touched || form.submitted)) {
+            <p class="error-message">This field is required</p>
+        }
         </div>
         <div class="input-group">
             <label for="interest-rate">Interest Rate</label>
-            <div class="input-wrapper">
-                <input id="interest-rate" name="interest-rate" type="number" [(ngModel)]="enteredInterestRate">
-                <span class="suffix">%</span>
+            <div class="input-wrapper" [class.invalid]="interestRate.invalid && interestRate.touched">
+                <input id="interest-rate" name="interest-rate" type="number" required min="1" [(ngModel)]="enteredInterestRate" #interestRate="ngModel">
+                <span class="suffix" [class.invalid]="interestRate.invalid && interestRate.touched">%</span>
             </div>
+            @if (interestRate.invalid && (interestRate.touched || form.submitted)) {
+            <p class="error-message">This field is required</p>
+        }
         </div>
     </div>
     <div class="input-group">
         <p class="field-label">Mortgage Type</p>
-        <label class="radio-card">
-            <input type="radio" name="mortgage-type" value="repayment" [(ngModel)]="enteredMortgageType">
+        <label class="radio-card" [class.invalid]="mortgageType.invalid && (mortgageType.touched || form.submitted)">
+            <input type="radio" name="mortgage-type" value="repayment" required [(ngModel)]="enteredMortgageType" #mortgageType="ngModel">
             <span class="radio-dot"></span>
             <span class="radio-text">Repayment</span>
         </label>
-        <label class="radio-card">
+        <label class="radio-card" [class.invalid]="mortgageType.invalid && (mortgageType.touched || form.submitted)">
             <input type="radio" name="mortgage-type" value="interest-only" [(ngModel)]="enteredMortgageType">
             <span class="radio-dot"></span>
             <span class="radio-text">Interest Only</span>
         </label>
+        @if (mortgageType.invalid && (mortgageType.touched || form.submitted)) {
+            <p class="error-message">This field is required</p>
+        }
     </div>
     <button>
         <img src="../../assets/icon-calculator.svg">

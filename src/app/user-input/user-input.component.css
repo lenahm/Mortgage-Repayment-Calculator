@@ -144,6 +144,23 @@ button:hover {
   opacity: 0.85;
 }
 
+/* ERROR STATES */
+
+.input-wrapper.invalid {
+  border-color: red;
+}
+
+.prefix.invalid {
+  background: var(--red);
+  color: var(--white);
+}
+
+.error-message {
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  color: red;
+}
+
 /* RESPONSIVE DESIGN */
 
 @media (max-width: 1000px) {

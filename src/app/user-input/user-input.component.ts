@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-user-input',
@@ -10,26 +11,28 @@ import { FormsModule } from '@angular/forms';
 })
 export class UserInputComponent {
   @Output() calculate = new EventEmitter<{ mortgageAmount: number, mortgageTerm: number, interestRate: number, mortgageType: string}>(); 
+  @ViewChild('form') form!: NgForm;
 
-  enteredMortgageAmount = '0';
-  enteredMortgageTerm = '0'; 
-  enteredInterestRate = '0'; 
+  enteredMortgageAmount = '';
+  enteredMortgageTerm = ''; 
+  enteredInterestRate = ''; 
   enteredMortgageType = ''; 
 
-  onSubmit() {
+  onSubmit(form: any) {
+    if (form.invalid) {
+      return;
+    }
+
     this.calculate.emit({
       mortgageAmount: +this.enteredMortgageAmount, 
       mortgageTerm: +this.enteredMortgageTerm, 
       interestRate: +this.enteredInterestRate, 
       mortgageType: this.enteredMortgageType
     }); 
-    this.clearAllInputs();
+    form.resetForm();
   }
   
-  clearAllInputs() {    
-    this.enteredMortgageAmount = '0';
-    this.enteredMortgageTerm = '0'; 
-    this.enteredInterestRate = '0'; 
-    this.enteredMortgageType = '';
+  clearAllInputs() {   
+    this.form.resetForm(); 
   }
 }
