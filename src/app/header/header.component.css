@@ -21,3 +21,12 @@ button {
 button:hover {
   color: var(--slate-900);
 }
+
+@media (max-width: 500px) {
+  header {
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+}
