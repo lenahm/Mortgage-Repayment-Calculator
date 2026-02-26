@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 
 import { HeaderComponent } from './header/header.component';
 import { UserInputComponent } from './user-input/user-input.component';
@@ -12,6 +12,8 @@ import { ResultsComponent } from './results/results.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  @ViewChild('userInputComponent') userInputComponent!: UserInputComponent;
+  
   calculationResults?: {monthlyRate: string, totalPayment: string }; 
 
   onCalculateResults(data: { mortgageAmount: number, mortgageTerm: number, interestRate: number, mortgageType: string }) {
@@ -48,5 +50,9 @@ export class AppComponent {
 
   calculateTotalPayment(durationInMonths: number, monthlyRate: number) {
     return durationInMonths * monthlyRate;  
+  }
+
+  onClearAll() {
+    this.userInputComponent.clearAllInputs();
   }
 }

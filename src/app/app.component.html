@@ -1,8 +1,8 @@
 <div class="container">
     <main class="page">
         <section class="left">
-            <app-header />
-            <app-user-input (calculate)="onCalculateResults($event)" />
+            <app-header (clearAllClicked)="onClearAll()" />
+            <app-user-input #userInputComponent (calculate)="onCalculateResults($event)"></app-user-input>
         </section>
         <section class="right">
             <app-results [results]="calculationResults" />

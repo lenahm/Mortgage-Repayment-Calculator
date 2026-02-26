@@ -23,7 +23,10 @@ export class UserInputComponent {
       interestRate: +this.enteredInterestRate, 
       mortgageType: this.enteredMortgageType
     }); 
-
+    this.clearAllInputs();
+  }
+  
+  clearAllInputs() {    
     this.enteredMortgageAmount = '0';
     this.enteredMortgageTerm = '0'; 
     this.enteredInterestRate = '0'; 
