@@ -13,9 +13,39 @@ import { ResultsComponent } from './results/results.component';
 })
 export class AppComponent {
   onCalculateResults(data: { mortgageAmount: number, mortgageTerm: number, interestRate: number, mortgageType: string }) {
-    console.log('From AppComponent: ', data.mortgageAmount);
-    console.log('From AppComponent: ', data.mortgageTerm);
-    console.log('From AppComponent: ', data.interestRate);
-    console.log('From AppComponent: ', data.mortgageType);
+    const mortgageDurationInMonths = data.mortgageTerm * 12; 
+
+    // calculate the monthly interest
+    const monthlyInterest = (data.interestRate / 100) / 12; 
+
+    if (data.mortgageType == 'repayment') {
+      // calculate the monthly rate (annuity formula)
+      const monthlyRate = data.mortgageAmount * (((monthlyInterest * ((1 + monthlyInterest) ** mortgageDurationInMonths))) / (((1 + monthlyInterest) ** mortgageDurationInMonths ) - 1));
+      
+      // calculate the total payment over the mortgage term
+      const totalPayment = this.calculateTotalPayment(mortgageDurationInMonths, monthlyRate); 
+      
+      // format the monthly rate and the total payment to two decimal places
+      const formattedMonthlyRate = this.formatMoney(monthlyRate); 
+      const formattedTotalPayment = this.formatMoney(totalPayment); 
+    } else {
+      // calculate the montly rate (interest only)
+      const monthlyRate = data.mortgageAmount * monthlyInterest; 
+      
+      // calculate the total payment over the mortgage term
+      const totalPayment = this.calculateTotalPayment(mortgageDurationInMonths, monthlyRate); 
+      
+      // format the monthly rate and the total payment and round it to two decimal places
+      const formattedMonthlyRate = this.formatMoney(monthlyRate); 
+      const formattedTotalPayment = this.formatMoney(totalPayment); 
+    }
+  }
+
+  formatMoney(money: number) {
+    return new Intl.NumberFormat('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(money); 
+  }
+
+  calculateTotalPayment(durationInMonths: number, monthlyRate: number) {
+    return durationInMonths * monthlyRate;  
   }
 }
