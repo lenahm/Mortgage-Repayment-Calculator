@@ -1,0 +1,23 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: 1.3rem;
+  color: var(--slate-900);
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  color: var(--slate-700);
+}
+
+button:hover {
+  color: var(--slate-900);
+}
