@@ -20,6 +20,9 @@
 }
 
 .right {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
   padding: 2rem;
   background: var(--slate-900);
   border-bottom-left-radius: 80px;

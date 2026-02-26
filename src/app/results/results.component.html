@@ -1,2 +1,19 @@
-<p>{{ results?.monthlyRate }}</p>
-<p>{{ results?.totalPayment }}</p>
+@if(!results) {
+    <div class="container-no-results">
+        <img src="../../assets/illustration-empty.svg">
+        <h1>Results shown here</h1>
+        <p>Complete the form and click "calculate repayments" to see what your monthly repayments would be.</p>
+    </div>
+} @else {
+    <div class="container-results">
+        <h1>Your results</h1>
+        <p>Your results are shown below based on the information you provided. To adjust the results, edit the form and click "calculate repayments" again.</p>
+        <div class="results-card">
+            <p>Your monthly repayments</p>
+            <div id="monthly-repayments">{{ results.monthlyRate }}</div>
+            <hr>
+            <p>Total you'll repay over the term</p>
+            <div id="total-repayment">{{ results.totalPayment }}</div>
+        </div>
+    </div>
+}

@@ -1,0 +1,56 @@
+.container-no-results {
+  text-align: center;
+}
+
+.container-results {
+  text-align: left;
+}
+
+img {
+  margin-top: 5rem;
+  height: 11rem;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+p {
+  font-size: 0.8rem;
+  color: var(--slate-300);
+}
+
+.results-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--very-dark-blue);
+  border-radius: 10px;
+  border-top: 6px solid var(--lime);
+}
+
+#monthly-repayments {
+  font-size: 2.6rem;
+  font-weight: 600;
+  color: var(--lime);
+}
+
+#total-repayment {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+@media (max-width: 1000px) {
+  img {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  img {
+    height: 8rem;
+  }
+}
