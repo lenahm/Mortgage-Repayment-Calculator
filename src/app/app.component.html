@@ -2,7 +2,7 @@
     <main class="page">
         <section class="left">
             <app-header />
-            <app-user-input />
+            <app-user-input (calculate)="onCalculateResults($event)" />
         </section>
         <section class="right">
             <app-results />

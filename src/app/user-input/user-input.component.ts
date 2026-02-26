@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -9,20 +9,24 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './user-input.component.css'
 })
 export class UserInputComponent {
+  @Output() calculate = new EventEmitter<{ mortgageAmount: number, mortgageTerm: number, interestRate: number, mortgageType: string}>(); 
+
   enteredMortgageAmount = '0';
   enteredMortgageTerm = '0'; 
   enteredInterestRate = '0'; 
   enteredMortgageType = ''; 
 
   onSubmit() {
-    console.log(this.enteredMortgageAmount);
-    console.log(this.enteredMortgageTerm);
-    console.log(this.enteredInterestRate);
-    console.log(this.enteredMortgageType);
+    this.calculate.emit({
+      mortgageAmount: +this.enteredMortgageAmount, 
+      mortgageTerm: +this.enteredMortgageTerm, 
+      interestRate: +this.enteredInterestRate, 
+      mortgageType: this.enteredMortgageType
+    }); 
 
-    this.enteredMortgageAmount = '';
-    this.enteredMortgageTerm = ''; 
-    this.enteredInterestRate = ''; 
+    this.enteredMortgageAmount = '0';
+    this.enteredMortgageTerm = '0'; 
+    this.enteredInterestRate = '0'; 
     this.enteredMortgageType = '';
   }
 }

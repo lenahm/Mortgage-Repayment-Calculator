@@ -11,4 +11,11 @@ import { ResultsComponent } from './results/results.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {}
+export class AppComponent {
+  onCalculateResults(data: { mortgageAmount: number, mortgageTerm: number, interestRate: number, mortgageType: string }) {
+    console.log('From AppComponent: ', data.mortgageAmount);
+    console.log('From AppComponent: ', data.mortgageTerm);
+    console.log('From AppComponent: ', data.interestRate);
+    console.log('From AppComponent: ', data.mortgageType);
+  }
+}
