@@ -1,27 +1,55 @@
-# Essentials
+# Mortgage Repayment Calculator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
+## Overview
 
-## Development server
+This project is my solution to the **Mortgage Repayment Calculator Challenge** by [Frontend Mentor](https://www.frontendmentor.io).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The goal of the challenge was to build a responsive Mortgage Repayment Calculator that closely matches the provided design - including a clean layout and component hierarchy, hover / active states and form validation.
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Mortgage repayment calculation with two options:
+  - **Repayment** – based on the standard annuity formula for mortgage loans
+  - **Interest-only** – only the interest is paid during the term, resulting in a residual debt at the end
+- Form validation with error messages when required fields are not filled in
+- Responsive layout for desktop, tablet and smartphone
+- Hover and active states for improved user interaction
+- Clean component-based architecture
 
-## Build
+## Screenshots
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+![Screenshot with no calculation results](./screenshot1.png)
 
-## Running unit tests
+![Screenshot with calculation results](./screenshot2.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Getting Started
 
-## Running end-to-end tests
+To run the project locally:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Clone the repository
+2. Run `npm install`
+3. Run `npm start`
+4. Open http://localhost:4200/
 
-## Further help
+## Links
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Challenge: https://www.frontendmentor.io/challenges/mortgage-repayment-calculator-Galx1LXK73
+
+## Built With
+
+- Angular
+- HTML5
+- CSS3
+- Responsive Design (Flexbox, Grid)
+
+For this project, I deliberately used plain CSS instead of a CSS framework or preprocessor. The focus was on implementing layouts, media queries, and component styling from scratch in order to strengthen my understanding of core CSS concepts.
+
+## Architecture
+
+The project's focus was on understanding and strengthening Angular fundamentals such as:
+
+- Component-based architecture
+- Standalone components
+- Data binding (property and event binding)
+- Form handling and validation using Angular's template-driven forms
+- Separation of logic and template
