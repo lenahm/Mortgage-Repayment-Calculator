@@ -1,2 +1,42 @@
-<p>user-input works!</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum temporibus esse mollitia provident quaerat quam consequuntur rerum eligendi magni nobis totam, eveniet voluptate dolorem cumque voluptatum veniam eos laudantium inventore ipsam nostrum ad voluptates architecto molestiae delectus. Officia fugit impedit debitis eos harum doloremque. Atque dicta neque voluptatem, beatae soluta dolores aperiam vero in ratione qui? Quaerat dolorem doloribus voluptate tempore, explicabo iusto repudiandae rem, minima vero inventore esse animi adipisci repellendus dolore est eligendi aperiam similique eius nulla, quae eum. Laboriosam rerum ducimus animi sit, nesciunt ea sapiente veniam odio similique in sunt eligendi, itaque ipsum facere velit et a deserunt delectus esse officia sed neque voluptate molestias.</p>
+<form>
+    <div class="input-group">
+        <label for="mortgage-amount">Mortgage Amount</label>
+        <div class="input-wrapper">
+            <span class="prefix">€</span>
+            <input id="mortgage-amount" name="mortgage-amount" type="number">
+        </div>
+    </div>
+    <div class="input-two-columns">
+        <div class="input-group">
+            <label for="mortgage-term">Mortgage Term</label>
+            <div class="input-wrapper">
+                <input id="mortgage-term" name="mortgage-term" type="number">
+                <span class="suffix">years</span>
+            </div>
+        </div>
+        <div class="input-group">
+            <label for="interest-rate">Interest Rate</label>
+            <div class="input-wrapper">
+                <input id="interest-rate" name="interest-rate" type="number">
+                <span class="suffix">%</span>
+            </div>
+        </div>
+    </div>
+    <div class="input-group">
+        <p class="field-label">Mortgage Type</p>
+        <label class="radio-card">
+            <input type="radio" name="mortgage-type" value="repayment">
+            <span class="radio-dot"></span>
+            <span class="radio-text">Repayment</span>
+        </label>
+        <label class="radio-card">
+            <input type="radio" name="mortgage-type" value="interest-only">
+            <span class="radio-dot"></span>
+            <span class="radio-text">Interest Only</span>
+        </label>
+    </div>
+    <button>
+        <img src="../../assets/icon-calculator.svg">
+        <span>Calculate Repayments</span>
+    </button>
+</form>
