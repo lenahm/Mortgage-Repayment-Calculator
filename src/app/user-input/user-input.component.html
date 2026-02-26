@@ -1,23 +1,23 @@
-<form>
+<form (ngSubmit)="onSubmit()">
     <div class="input-group">
         <label for="mortgage-amount">Mortgage Amount</label>
         <div class="input-wrapper">
             <span class="prefix">€</span>
-            <input id="mortgage-amount" name="mortgage-amount" type="number">
+            <input id="mortgage-amount" name="mortgage-amount" type="number" [(ngModel)]="enteredMortgageAmount">
         </div>
     </div>
     <div class="input-two-columns">
         <div class="input-group">
             <label for="mortgage-term">Mortgage Term</label>
             <div class="input-wrapper">
-                <input id="mortgage-term" name="mortgage-term" type="number">
+                <input id="mortgage-term" name="mortgage-term" type="number" [(ngModel)]="enteredMortgageTerm">
                 <span class="suffix">years</span>
             </div>
         </div>
         <div class="input-group">
             <label for="interest-rate">Interest Rate</label>
             <div class="input-wrapper">
-                <input id="interest-rate" name="interest-rate" type="number">
+                <input id="interest-rate" name="interest-rate" type="number" [(ngModel)]="enteredInterestRate">
                 <span class="suffix">%</span>
             </div>
         </div>
@@ -25,12 +25,12 @@
     <div class="input-group">
         <p class="field-label">Mortgage Type</p>
         <label class="radio-card">
-            <input type="radio" name="mortgage-type" value="repayment">
+            <input type="radio" name="mortgage-type" value="repayment" [(ngModel)]="enteredMortgageType">
             <span class="radio-dot"></span>
             <span class="radio-text">Repayment</span>
         </label>
         <label class="radio-card">
-            <input type="radio" name="mortgage-type" value="interest-only">
+            <input type="radio" name="mortgage-type" value="interest-only" [(ngModel)]="enteredMortgageType">
             <span class="radio-dot"></span>
             <span class="radio-text">Interest Only</span>
         </label>
